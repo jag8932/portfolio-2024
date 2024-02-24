@@ -1,13 +1,16 @@
-import { auth, googleProvider } from '../config/firebase';
+import { auth, googleProvider, analytics } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [show, setShow] = useState(false);
 
-  //  console.log(auth?.currentUser?.email);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const signUp = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
@@ -26,6 +29,7 @@ export const Auth = () => {
     const signInWithGoogle = async () => {
         try {
             await signInWithPopup(auth, googleProvider);
+            console.log(auth.currentUser);
         } catch (error) {
             console.log(error);
         }
@@ -38,21 +42,48 @@ export const Auth = () => {
             console.log(error);
         }
     };
-    return (
-        <>
-            <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-            <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Admin
-                </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={signUp}>Sign In</Dropdown.Item>
-                    <Dropdown.Item onClick={signInWithGoogle}><img className="buttonImg" src="/google-icon-1.webp" alt="google icon"></img>Sign In With Google</Dropdown.Item>
-                    <Dropdown.Item onClick={logout}>Sign Out</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        </>
+    const isSignedIn = () => {
+        if (auth.currentUser == null || !auth.currentUser) {
+            return false
+        }
+        return true;
+    }
+
+    const isAdmin = () => {
+        if (!isSignedIn) {
+            return false;
+        }
+        if (auth.currentUser.email != "jacobgoodwillie@gmail.com") {
+            return false;
+        }
+        
+        return true;
+    }
+
+    return (
+            <div className="off-canvas-container">
+                <div className="show-off-canvas">
+                    <button onClick={handleShow}>Admin</button>
+                </div>
+            
+            <Offcanvas placement="end" show={show} onHide={handleClose}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>{isSignedIn() ? `Welcome back ${auth.currentUser.displayName}!` : 'Not Signed In'}</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    {isSignedIn() ? 
+                    <>
+                    <button type="button" className="btn btn-light" onClick={logout}>Sign Out</button>
+                    {isAdmin() ? <>Admin tools coming soon</> : <><br></br>No admin permissions</>}
+                    </> 
+                    : 
+                    <>
+                    <button type="button" className="btn btn-light" onClick={signInWithGoogle}><img src="google-icon-1.webp" alt="google logo" style={{ width: '25px' }}></img>Sign in with Google</button>
+                    </>}
+                    
+                </Offcanvas.Body>
+            </Offcanvas>
+            </div>
     )
 }

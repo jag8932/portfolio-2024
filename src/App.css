@@ -4,6 +4,9 @@ section {
  /* border-bottom: 5px solid rgba(25, 25, 65, 0.65); */
 } 
 
+html,body {
+  height: 100%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -28,6 +31,11 @@ section {
 
 .App-link {
   color: #61dafb;
+}
+
+.home-aboutme label {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 .auth {
   display: flex;
@@ -84,16 +92,17 @@ section {
   margin: auto;
 }
 .hero-img {
-  background-image: url("../public/hero-mountains.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-} 
-
+  width: 100%;
+}
+.hero-container {
+  position: static;
+  width: 100%;
+  background-image: linear-gradient(to bottom,rgb(5,19,22), rgb(0, 0, 0));
+}
 .hero-content {
-  padding-top: 250px;
-  padding-bottom: 250px;
-  text-align: center;
   color: white;
+  margin: 15px;
+  padding-bottom: 15px;
 }
 
 /* Reusables */
@@ -112,6 +121,25 @@ section {
   color: white;
   width: 155px;
   margin: auto;
+}
+.off-canvas-container {
+  position: absolute;
+  top: 100px;
+  left: calc(100% - 55px);
+  height:100%;
+}
+.show-off-canvas {
+  position: fixed;
+  z-index: 1;
+  top: 25px;
+}
+.show-off-canvas button {
+  background-color: rgba(25, 25, 65, 0.65);
+  border: none;
+  border-radius: 20px 0px 0px 20px;
+  padding-left: 5px;
+  color: white;
+  position: relative;
 }
 
 /* --- */ 
@@ -166,11 +194,35 @@ section {
   scrollbar-width: none;  /* Firefox */
 }
 
+@media screen and (min-width: 600px) {
+  .hero-container {
+    position: relative;
+    height: calc(100vw/1.5);
+    max-height: 1000px;
+    width: 100%;
+    background-color: #282c34;
+  }
+  .hero-img {
+    max-height: 100%;
+    width: auto;
+    display: block;
+    margin: auto;
+  }
+  
+  .hero-content {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 50%;
+  }
+}
 @media screen and (max-width: 1170px) {
   .flex-responsive {
     flex-direction: column;
   }
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

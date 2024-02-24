@@ -1,4 +1,5 @@
 import './App.css';
+import { Auth } from './components/auth';
 import { ProjectGrid } from './components/projectGrid';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,16 +12,19 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-       <Navbar.Brand href="#home">Jacob Goodwillie</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="www.linkedin.com/in/jacob-goodwillie-92697b176"><img className="nav-img" src="linkedin.png"></img></Nav.Link>
-            <Nav.Link href="https://github.com/jag8932"><img className="nav-img" src="github.png"></img></Nav.Link>
-          </Nav>
+      <Navbar expand="sm" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand href="#home">Jacob Goodwillie</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="www.linkedin.com/in/jacob-goodwillie-92697b176"><img className="nav-img" src="linkedin.png"></img></Nav.Link>
+              <Nav.Link href="https://github.com/jag8932"><img className="nav-img" src="github.png"></img></Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-
+      <Auth />
       <section className="home-hero">
         <Hero />
       </section>
