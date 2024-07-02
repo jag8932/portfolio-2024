@@ -5,8 +5,8 @@ export const AboutMe = () => {
             <h1 className="display-3">My Skills</h1>
             <div className="container">
             <br></br>
-            <h2 className="text-info">Languages</h2>
-            <br></br>
+                <h2 className="text-info">Languages</h2>
+                <br></br>
                 <div className="row"> 
                     <label className="col-sm fs-4">JavaScript</label>
                     <label className="col-sm fs-4">C#</label>

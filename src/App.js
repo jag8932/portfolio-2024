@@ -1,5 +1,4 @@
 import './App.css';
-import { Auth } from './components/auth';
 import { ProjectGrid } from './components/projectGrid';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -24,7 +23,6 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Auth />
       <section className="home-hero">
         <Hero />
       </section>

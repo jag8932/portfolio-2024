@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 import { auth } from '../config/firebase';
 import { db } from '../config/firebase';
 import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import Image from 'react-bootstrap/Image';
+import {SideCard} from './SideCard';
 
 export const ProjectGrid = () => {
     const [projectList, setProjectList] = useState([]);
     const [permissionMessage, setPermissionMessage] = useState("");
-    const [showAdminButtons, setShowAdminButtons] = useState(false);
+   // const [showAdminButtons, setShowAdminButtons] = useState(false);
     const [projectType, setProjectType] = useState("website");
     const projectCollectionRef = collection(db, "projects");
 
@@ -77,24 +75,8 @@ export const ProjectGrid = () => {
                 {
                     projectList.filter((project) => project.type === projectType)
                         .map((project) => (
-                            <div className="Project-tile" key={project.id} style={{ width: '500px' }}>
-                                <a href={project.link} className="Card-Link" rel="noreferrer" target="_blank">
-                                    <Card >
-                                        <Card.Img src={project.imgref} />
-                                        <Card.ImgOverlay id="image-overlay-scroll" className="overflow-auto">
-                                            <Card.Title>
-                                                {project.name}
-                                            </Card.Title>
-                                            <Card.Text>
-                                                Software used: {project.software}
-                                            </Card.Text>
-                                            <Card.Text>
-                                                {project.description}
-                                            </Card.Text>
-                                        </Card.ImgOverlay>
-                                    </Card>
-                                </a>
-                                <Button className="delete-button" onClick={() => deleteProject(project.id)}>Delete</Button>
+                            <div className="Project-tile" key={project.id} style={{ width: 'auto' }}>
+                                <SideCard  img={project.imgref} title={project.name} text={project.description} link={project.link}/>
                                 <label className="text-danger">{permissionMessage}</label>
                             </div>
                         ))
