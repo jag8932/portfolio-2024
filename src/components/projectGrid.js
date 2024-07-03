@@ -54,8 +54,8 @@ export const ProjectGrid = () => {
     }
     else {
         return (
-            <div className="margin-12half">
-                <h1 className="display-3">Projects</h1>
+            <div className="projects margin-12half">
+                <h1 className="display-3 section-title">Projects</h1>
                 <div className="select-container">
                     <div className="flex-responsive">
                         <div className="button-group-item">

@@ -24,13 +24,11 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <section className="home-hero">
-        <Hero />
-      </section>
-      <section className="home-aboutme">
+
+      <section className="home-aboutme bg-dark">
         <AboutMe />
       </section>
-      <section className="home-projects">
+      <section className="home-projects bg-dark">
         <ProjectGrid />
       </section>
     </div>
