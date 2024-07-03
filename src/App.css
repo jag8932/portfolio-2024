@@ -1,9 +1,4 @@
 
-section {
-  margin-bottom: 50px;
- /* border-bottom: 5px solid rgba(25, 25, 65, 0.65); */
-} 
-
 html,body {
   height: 100%;
   background-color: #292929;
@@ -49,6 +44,12 @@ html,body {
   vertical-align: center;
 }
 
+#about-me {
+  padding-top: 100px;
+}
+#about-me label {
+  color: white;
+}
 .button-website {
   background-image: URL("../public/ux.png");
   width: 150px;
@@ -114,7 +115,6 @@ html,body {
 .margin-12half {
   width: 75%;
   margin: auto;
-  color: white;
 }
 .flex-responsive {
   display: flex;
@@ -202,7 +202,12 @@ html,body {
   text-align: center;
   margin: auto;
 }
-
+.projects {
+  padding-top: 100px;
+}
+.section-title {
+  color: white;
+}
 .nav-img {
   max-width: 40px;
 }

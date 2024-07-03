@@ -1,8 +1,8 @@
 
 export const AboutMe = () => {
     return (
-        <div className="margin-12half">
-            <h1 className="display-3">My Skills</h1>
+        <div className="bg-dark margin-12half" id="about-me">
+            <h1 className="display-3 section-title">My Skills</h1>
             <div className="container">
             <br></br>
                 <h2 className="text-info">Languages</h2>
