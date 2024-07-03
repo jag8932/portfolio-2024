@@ -34,6 +34,10 @@ html,body {
   color: #61dafb;
 }
 
+.Resume-link {
+  border: none;
+  background-color: #F8F9FA;
+}
 .home-aboutme label {
   margin-top: 2px;
   margin-bottom: 2px;

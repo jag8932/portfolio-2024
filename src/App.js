@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Hero } from './components/hero';
 import { AboutMe } from './components/aboutMe';
-
+import { ResumeLink } from './components/resumeLink';
 
 function App() {
 
@@ -13,12 +13,13 @@ function App() {
     <div className="App">
       <Navbar expand="sm" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">Jacob Goodwillie</Navbar.Brand>
+          <Navbar.Brand href="#home"><strong>Jacob Goodwillie</strong></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="www.linkedin.com/in/jacob-goodwillie-92697b176"><img className="nav-img" src="linkedin.png"></img></Nav.Link>
               <Nav.Link href="https://github.com/jag8932"><img className="nav-img" src="github.png"></img></Nav.Link>
+              <ResumeLink/>
             </Nav>
           </Navbar.Collapse>
         </Container>
